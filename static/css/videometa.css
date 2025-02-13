@@ -1,0 +1,105 @@
+div.bottom {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+div.bottom div.left {
+	min-width: 370px;
+	width: calc(100vw - 610px);
+}
+
+div.bottom div#Functionality {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+div.bottom div#Functionality div#Creator {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+div.bottom div#Functionality div#Creator * {
+	margin: 4px;
+}
+
+div.bottom div#Functionality img#Creator-Image {
+	height: 50px;
+	border-radius: 50%;
+	background-color: white;
+}
+
+div.bottom div#Functionality button#DL-Creator {
+	background-color: #fdfd96;
+	color: #333;
+	border: none;
+	border-radius: 20px;
+	padding: 5px 15px;
+	font-weight: BOLD;
+	cursor: pointer;
+}
+
+div.bottom div#Functionality div#Subs {
+	display: flex;
+	align-items: center;
+}
+
+div.bottom div#Functionality div#Subs img {
+	height: 32px;
+	margin: 0;
+}
+
+div.bottom div#Functionality div#Subs p {
+	margin: 0;
+}
+
+div.bottom div#Description {
+	background-color: #2d2d2d;
+	min-height: 100px;
+	border-radius: 25px;
+	margin-bottom: 10px;
+}
+
+div.bottom div#Description div.top,
+div.bottom div#Description div.top div {
+	display: flex;
+	align-items: center;
+}
+
+div.bottom div#Description div.top div {
+	margin-left: 20px;
+}
+
+div.bottom div#Description div.top img {
+	width: 32px;
+	margin-right: 5px;
+}
+
+div.bottom div#Description div#Flavor {
+	padding: 20px;
+}
+
+div.bottom div.right {
+	width: 370px;
+}
+
+span.timestamp {
+	color: #87ceeb;
+	cursor: pointer;
+}
+
+span.timestamp:hover {
+	text-decoration: underline;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+	div.bottom div.left,
+	div.bottom div.right {
+		width: 100%;
+	}
+}

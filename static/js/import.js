@@ -1,0 +1,1 @@
+import { Dexie } from '/static/js/node_modules/dexie/dist/dexie.min.js';

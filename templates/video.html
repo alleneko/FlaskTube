@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+	<script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/video.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/videometa.css') }}">
+{% endblock %}
+
+{% block main %}
+		<div id="Video-Player">
+			<video src="{{ url_for('static', filename='vid/' + video.video_id + '/' + video.video_id + '.mp4') }}" autoplay loop playsinline id="{{ video.video_id }}"></video>
+			<div id="Menu" class="visible">
+				<div id="Progress-Bar">
+					<div id="Progress"></div>
+				</div>
+				<div id="Functions">
+					<div class="left">
+						<div id="Play">
+							<img src="{{ url_for('static', filename='img/play.png') }}" id="Play-Button" class="hidden">
+							<img src="{{ url_for('static', filename='img/pause.png') }}" id="Pause-Button">
+						</div>
+						<div id="Volume">
+							<img id="Mute-Button" src="{{ url_for('static', filename='img/mute.png') }}">
+							<div id="Volume-Bar">
+								<div id="Current-Volume"></div>
+							</div>
+						</div>
+						<p id="Current-Time">
+							00:00:00
+						</p>
+						<p id="Time-Divider">
+						/
+						</p>
+						<p id="Duration">
+							00:00:00
+						</p>
+					</div>
+					<div class="right">
+						<div id="Autoplay">
+							<img src="{{ url_for('static', filename='img/loop.png') }}" id="Autoplay-Button">
+						</div>
+						<div id="Maximize">
+							<img src="{{ url_for('static', filename='img/maximize.png') }}" id="Maximize-Button">
+							
+						</div>
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="bottom">
+			<div class="left">
+				<div id="Metadata">
+					<h2>{{ video.title }}</h2>
+					<div id="Functionality">
+						<div id="Creator">
+							{% if creator %}
+								<a href="/creator?yt={{ creator.channel_id }}"><img src="{{ url_for('static', filename='chan/' + creator.channel_id + '/' + creator.channel_id + '.jpg') }}" id="Creator-Image"></a>
+
+								<p id="Creator-Name">{{ creator.channel }}</p>
+								
+								<div id="Subs">
+									<img src="{{ url_for('static', filename='img/subs.png') }}">
+									<p id="Subscribers" title="{{ creator.followers | format_num }}">{{ creator.followers | shorten_num }}</p>
+								</div>
+							{% else %}
+								<a href="/creator?yt={{ video.channel_id }}"><img src="{{ url_for('static', filename='img/youtube.png') }}" id="Creator-Image"></a>
+								<p id="Creator-Name">{{ video.channel }}</p>
+								<p id="Subscribers">0 Subscribers</p>
+							{% endif %}
+							<button id="DL-Creator" class="{{ video.channel_id }}">Get Creator Metadata</button>
+						</div>
+					</div>
+
+					<div id="Description">
+						<div class="top">
+							<div id="Views">
+								<img src="{{ url_for('static', filename='img/views.png') }}">
+								<p title="{{ video.views | format_num }}">{{ video.views | shorten_num }}</p>
+							</div>
+							<div id="Upload" title="{{ video.timestamp | format_date }}">
+								<img src="{{ url_for('static', filename='img/calendar.png') }}">
+								<p>{{ video.timestamp | time_ago }}</p>
+							</div>
+						</div>
+						<div id="Flavor">
+							{% for para in video.description.split("\n") %}
+								<p>{{ para | find_links | safe }}</p>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+				<div id="Comment-Section">
+					
+				</div>
+			</div>
+
+			<div class="right">
+				
+			</div>
+
+		</div>
+{% endblock %}
+
+
+{% block scripts %}
+	<script type="text/javascript" src="{{ url_for('static', filename='js/video.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/video_metadata.js') }}"></script>
+{% endblock %}
+</body>
+</html>

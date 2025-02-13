@@ -1,0 +1,105 @@
+#Video-Player {
+	width: 100%;
+	max-height: calc(100vh - 100px);
+	background-color: #000;
+}
+
+#Video-Player video {
+	max-width: 100%;
+	max-height: calc(100vh - 100px);
+	margin: auto;
+	display: block;
+}
+
+#Video-Player #Menu {
+	display: none;
+	height: 55px;
+	width: 100%;
+	position: relative;
+	bottom: 55px;
+}
+
+#Video-Player #Menu.visible {
+	display: block;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#Progress-Bar {
+	width: 100%;
+	height: 5px;
+	background-color: #ffd1dc;
+}
+
+#Progress {
+	width: 0;
+	height: 5px;
+	background-color: #fdfd96;
+	border-right: solid 2px #333;
+}
+
+#Functions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 50px;
+	padding: 0 10px;
+}
+
+#Video-Player #Menu .right,
+#Video-Player #Menu .left {
+	display: flex;
+	align-items: center;
+}
+
+#Video-Player #Menu img {
+	height: 32px;
+	margin: 0 5px;
+}
+
+#Video-Player #Volume {
+	display: flex;
+	align-items: center;
+}
+
+#Video-Player #Mute-Button {
+	margin-right: 0px;
+}
+
+#Video-Player #Volume-Bar {
+	width: 100px;
+	height: 4px;
+	background-color: #ffd1dc;
+	margin-right: 5px;
+	display: none;
+	transition: display 2s ease-in-out;
+}
+
+#Video-Player #Volume:hover #Volume-Bar {
+	display: block;
+}
+
+#Video-Player #Current-Volume {
+	background-color: #fdfd96;
+	width: 50%;
+	height: 5px;
+	border-right: solid 2px #333;
+}
+
+#Video-Player #Current-Time {
+	margin-right: 3px;
+}
+
+#Video-Player #Duration {
+	margin-left: 3px;
+}
+
+@media only screen and (max-width: 560px) {
+	#Video-Player #Duration,
+	#Video-Player #Time-Divider {
+		display: none;
+	}
+
+	#Video-Player #Volume-Bar {
+		width: 50px;
+	}
+}

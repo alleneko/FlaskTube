@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/youtube.png') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+	
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<header>
+		<div class="left">
+			<button id="Hamburger"><img src="{{ url_for('static', filename='img/ham.png') }}"></button>
+ 		<a href="#"><img src="{{ url_for('static', filename='img/youtube.png') }}"></a>
+		</div>
+
+
+		<form class="center" method="GET" action="/search" id="Search-Form">
+			<input type="text" name="query" id="Search-Query"><button id="Search-Button"><img src="{{ url_for('static', filename='img/search.png') }}"></button>
+			<button type="button" id="Speech-to-Text"><img src="{{ url_for('static', filename='img/mic.png') }}"></button>
+		</form>
+
+
+		<div class="right">
+			
+		</div>
+	</header>
+
+
+	<nav>
+		<a class="divider" href="/"><img src="{{ url_for('static', filename='img/home.png') }}"><span>HOME</span></a>
+		<a class="divider" href="/channels"><img src="{{ url_for('static', filename='img/channel.png') }}"><span>Channels</span></a>
+
+		<hr class="solid">
+
+		<a class="divider" href="/playlists"><img src="{{ url_for('static', filename='img/playlist.png') }}"><span>Playlists</span></a>
+		<a class="divider" href="/playlist/1"><img src="{{ url_for('static', filename='img/playlist.png') }}"><span>Example 1</span></a>
+	</nav>
+
+
+	<main>
+		<form id="A2P" method="POST" action="/add-to-playlist">
+			<input type="hidden" name="vid" value="1">
+			<div>
+				<label for="ex1">Example 1</label><input type="checkbox" name="ex1" id="ex1">
+			</div>
+
+			<input type="text" name="new" placeholder="New playlist">
+			<button>DONE</button>
+		</form>
+
+		{% block main %}{% endblock %}
+
+	</main>
+
+
+	<aside id="Messages">
+		{% block messages %}{% endblock %}
+	</aside>
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/header.js') }}"></script>
+	{% block scripts %} {% endblock %}
+</body>
+</html>
